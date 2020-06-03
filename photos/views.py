@@ -45,20 +45,20 @@ def signup(request):
         form = SignUpForm()
     return render(request, 'registration/signup.html', {'form': form, 'name':name})
 
-# @login_required(login_url='/login/')
-# def new_post(request):
-#     current_user = request.user
+@login_required(login_url='/login/')
+def new_post(request):
+    current_user = request.user
    
-#     if request.method == 'POST':
-#         form = NewPostForm(request.POST, request.FILES)
-#         if form.is_valid():
-#             post = form.save(commit=False)
-#             post.user= current_user
-#             post.save()
-#         return redirect('home')
-#     else:
-#         form = NewPostForm()
-#     return render(request, 'new_post.html', {'current_user':current_user, 'form':form})
+    if request.method == 'POST':
+        form = NewPostForm(request.POST, request.FILES)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.user= current_user
+            post.save()
+        return redirect('home')
+    else:
+        form = NewPostForm()
+    return render(request, 'new_post.html', {'current_user':current_user, 'form':form})
 
 # @login_required(login_url='/login/')
 # def update_profile(request):
