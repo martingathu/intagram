@@ -60,29 +60,29 @@ def new_post(request):
         form = NewPostForm()
     return render(request, 'new_post.html', {'current_user':current_user, 'form':form})
 
-# @login_required(login_url='/login/')
-# def update_profile(request):
-#     current_user = request.user
-#     profile = Profile(user=request.user)
+@login_required(login_url='/login/')
+def update_profile(request):
+    current_user = request.user
+    profile = Profile(user=request.user)
    
-#     if request.method == 'POST':
-#         form = ProfileForm(request.POST, request.FILES,  instance=request.user.profile)
-#         if form.is_valid():
-#             profile = form.save(commit=False)
-#             profile.user= current_user
-#             profile.save()
-#         return redirect('home')
-#     else:
-#         form = ProfileForm(instance=request.user.profile)
-#         args = {}
-#         # args.update(csrf(request))
-#         args['form'] = form
-#     return render(request, 'update_profile.html', {'current_user':current_user, 'form':form})
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, request.FILES,  instance=request.user.profile)
+        if form.is_valid():
+            profile = form.save(commit=False)
+            profile.user= current_user
+            profile.save()
+        return redirect('home')
+    else:
+        form = ProfileForm(instance=request.user.profile)
+        args = {}
+        # args.update(csrf(request))
+        args['form'] = form
+    return render(request, 'update_profile.html', {'current_user':current_user, 'form':form})
 
-# def profile(request):
-#     current_user = request.user
+def profile(request):
+    current_user = request.user
 
-#     posts = Post.get_posts()
-#     comments = Comment.get_comments()
+    posts = Post.get_posts()
+    comments = Comment.get_comments()
     
-#     return render(request, 'profile.html', {'current_user':current_user, 'posts':posts, 'comments':comments})
+    return render(request, 'profile.html', {'current_user':current_user, 'posts':posts, 'comments':comments})
