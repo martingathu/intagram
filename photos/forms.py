@@ -28,7 +28,7 @@ class CommentForm(forms.ModelForm):
         model = Comment
         fields = ('comment',)
         
-# class ProfileForm(forms.ModelForm):
-#     class Meta:
-#         model = Profile
-#         exclude = ['user']
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        exclude = ['user']
