@@ -34,19 +34,19 @@ class Comment(models.Model):
         comments = cls.objects.all()
         return comments
 
-# class Profile(models.Model):
-#     user = models.OneToOneField(User, on_delete=models.CASCADE,)
-#     profile_photo = models.ImageField(upload_to = 'posts/')
-#     bio = models.TextField(max_length=255)
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE,)
+    profile_photo = models.ImageField(upload_to = 'posts/')
+    bio = models.TextField(max_length=255)
 
-#     def save_profile(self):
-#         self.save()
+    def save_profile(self):
+        self.save()
 
-#     def delete_profile(self):
-#         self.delete()
+    def delete_profile(self):
+        self.delete()
 
-#     def updateProfile(sender, **kwargs):
-#         if kwargs['created']:
-#             profile = Profile.objects.created(user=kwargs['instance'])
+    def updateProfile(sender, **kwargs):
+        if kwargs['created']:
+            profile = Profile.objects.created(user=kwargs['instance'])
 
-#             post_save.connect(Profile, sender=User)
+            post_save.connect(Profile, sender=User)
