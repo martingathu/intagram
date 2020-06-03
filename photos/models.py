@@ -23,16 +23,16 @@ class Post(models.Model):
     def delete_post(self):
         self.delete()
 
-# class Comment(models.Model):
-#     post = models.ForeignKey(Post, on_delete=models.CASCADE,)
-#     user = models.ForeignKey(User, on_delete=models.CASCADE,)
-#     comment = models.CharField(max_length=255)
-#     pub_date = models.DateTimeField(auto_now_add=True)
+class Comment(models.Model):
+    post = models.ForeignKey(Post, on_delete=models.CASCADE,)
+    user = models.ForeignKey(User, on_delete=models.CASCADE,)
+    comment = models.CharField(max_length=255)
+    pub_date = models.DateTimeField(auto_now_add=True)
 
-#     @classmethod
-#     def get_comments(cls):
-#         comments = cls.objects.all()
-#         return comments
+    @classmethod
+    def get_comments(cls):
+        comments = cls.objects.all()
+        return comments
 
 # class Profile(models.Model):
 #     user = models.OneToOneField(User, on_delete=models.CASCADE,)
