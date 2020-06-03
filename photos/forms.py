@@ -17,10 +17,10 @@ class SignUpForm(UserCreationForm):
         model = User
         fields = ('email' ,'username','password1', 'password2', )
 
-# class NewPostForm(forms.ModelForm):
-#     class Meta:
-#         model = Post
-#         exclude = ['user', 'pub_date']
+class NewPostForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        exclude = ['user', 'pub_date']
         
 
 # class CommentForm(forms.ModelForm):
