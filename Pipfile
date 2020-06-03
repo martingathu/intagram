@@ -13,6 +13,10 @@ psycopg2 = "*"
 django-tinymce = "*"
 django = "*"
 pillow = "*"
+gunicorn = "*"
+whitenoise = "*"
+django-heroku = "*"
+dj-database-url = "*"
 
 [requires]
 python_version = "3.6"
