@@ -1,0 +1,18 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+
+[packages]
+python-decouple = "*"
+django-registration = "==2.4.1"
+django-bootstrap3 = "*"
+psycopg2 = "*"
+django-tinymce = "*"
+django = "*"
+pillow = "*"
+
+[requires]
+python_version = "3.6"

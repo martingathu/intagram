@@ -1,0 +1,106 @@
+{%extends 'base.html'%}
+{% load humanize %}
+
+{%block content%}
+{{block.super}}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-2"></div>
+
+        <div class="col-sm-8">
+            {%for post in posts%}
+            <div class="card" style="margin-top:5%;margin-bottom:1%;">
+                <div class="card-header">
+
+
+                    {%if post.user.profile.profile_photo%}
+                    <a><img class="rounded-circle" src="{{post.user.profile.profile_photo.url}}"
+                            style="height:70px;width: 70px;" alt="No profile pic">
+                        <strong style="font-size:19px;">{{post.user.username | title}}</strong>
+                    </a>
+
+                    {%else%}
+
+                    <a class="fa fa-user fa-3x" style="margin-top:1%"><span
+                            style="font-size:19px;">{{post.user.username | title}}</span></a>
+                    {%endif%}
+
+                </div>
+
+                <div class="card-body text-center">
+                   
+                    <img class="img-fluid" src="{{post.post_image.url}}" style="height: 400px; width: 500px;"
+                        type="button" class="btn btn-sm btn-outline-primary" id="post{{post.id}}"
+                        data-whatever="{{post.id}}" data-toggle="modal" data-target="#extraModal{{post.id}}">
+                </div>
+
+                <div class="card-footer bg-white">
+                    <p><strong>{{post.user.username}}</strong> {{post.caption}}</p>
+                    <p style="font-size: 20px;color:gray;">{{post.pub_date | naturaltime}}</p>
+                    <strong>Comments:</strong>
+                    {% for comment in comments %}
+                    {%if post.id == comment.post.id%}
+                    <p><strong>{{comment.user.username}}</strong> {{comment.comment | title}}</p>
+                    {%endif%}
+                    {% endfor %}
+
+                    <form method="post" style="margin-top: 1.3em;">
+                        {{form.comment}}
+                        {% csrf_token %}
+                        <input type="hidden" value="{{post.id}}" name="post_id" />
+                        <button type="submit" class="btn btn-primary">Comment</button>
+                    </form>
+                </div>
+
+            </div>
+
+            {%endfor%}
+        </div>
+
+        <div class="col-sm-2"></div>
+    </div>
+
+    <!-- {% for post in posts %}
+
+    <div class="modal fade" id="extraModal{{post.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <button type="button" class="close text-danger" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+
+            <div class="modal-content ">
+
+
+                <div class="modal-body row" style="padding:0;">
+                    <img style="height: 500px;padding:0;margin: 0;" id="image" class=" col-12 col-md-7 text-center"
+                        src='{{post.post_image.url}}'>
+
+                    <div class=" col-12 col-md-5 card">
+                        <div class="card-header bg-white">
+                            <p><span>Posted by:
+                                </span><strong>{{post.user.username| title}}</strong></p>
+                            <p><span>Caption:
+                                </span>{{post.caption}}</p>
+
+                        </div>
+
+                        <div class="card-body">
+                            {% for comment in comments %}
+                            {%if post.id == comment.post.id%}
+                            <p><strong>{{comment.user.username}}</strong> {{comment.comment | title}} <span
+                                    style="font-size: 10px;color:gray;">{{comment.pub_date | naturaltime}}</span></p>
+                            {%endif%}
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    {%endfor%}
+</div> -->
+
+{%endblock%}
