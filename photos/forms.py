@@ -23,10 +23,10 @@ class NewPostForm(forms.ModelForm):
         exclude = ['user', 'pub_date']
         
 
-# class CommentForm(forms.ModelForm):
-#     class Meta:
-#         model = Comment
-#         fields = ('comment',)
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ('comment',)
         
 # class ProfileForm(forms.ModelForm):
 #     class Meta:
