@@ -37,7 +37,7 @@
           <a class='likes' href='/'><i class="far fa-heart"></i></a>
           {%if User.profile.dp%}
           <a href="/profile" ><img class="rounded-circle" src="{{user.profile.dp.url}}"
-            style="height:70px;width: 70px;" alt="No profile pic">
+            style="height:70px;width: 70px;">
           <strong style="font-size:19px;">{{current_user.username | title}}</strong>
           </a> 
           {%else%}
