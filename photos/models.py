@@ -23,6 +23,12 @@ class Post(models.Model):
     def delete_post(self):
         self.delete()
 
+    class Meta:
+        ordering = ['pub_date']
+
+    
+
+
 class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE,)
     user = models.ForeignKey(User, on_delete=models.CASCADE,)
@@ -50,3 +56,14 @@ class Profile(models.Model):
             profile = Profile.objects.created(user=kwargs['instance'])
 
             post_save.connect(Profile, sender=User)
+        return profile
+
+    @classmethod
+    def search_profile(cls, name):
+        profile = cls.objects.filter(user__username__icontains=name)
+        return profile 
+
+    @classmethod
+    def get_by_id(cls, id):
+        profile = Profile.objects.get(id=id)
+        return profile
