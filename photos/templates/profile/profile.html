@@ -19,7 +19,7 @@
 
             <div class="col-xs-6 col-sm-6 col-md-3">
                 <strong style="font-size:25px;">{{current_user.username | title}}</strong>
-                <a href='/updateprofile' class="btn btn-primary text-white">Edit profile</a>
+                <a href='/updateprofile/' class="btn btn-primary text-white">Edit profile</a>
                 {%if user.profile.bio %}
                 <p style="font-size:23px;"><strong>Bio:</strong> {{user.profile.bio}}</p>
                 {%else%}
