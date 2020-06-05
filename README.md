@@ -1,62 +1,90 @@
-# Personal gallery
-A personal gallery application that allow users to display their photos for others to see.
-   
-
-## Built By [Martin Gathu](https://github.com/martingathu/)
+# Instagram Clone
+#### Author **[martin Gathu.](https://github.com/martingathu)**
 
 ## Description
-Personal gallery is a web application that allow user to display their photos for others to see. Other users can view and also share available images by copying the image link.
-
-#### You can view the site at: https://martingathupersonalgallery.herokuapp.com/
-
-## User Stories
-These are the behaviours/features that the application implements for use by a user. As a user I would like to:
-
-* View different photos that interest me.
-* Click on a single photo to expand it and also view the details of the photo.
-* Search for different categories of photos.
-* Copy a link to the photo to share with my friends.
-* View photos based on the location they were taken
-
-## SetUp / Installation Requirements
-### Prerequisites
-* python3.6
-* pip
-* virtualenv
+This is a simple web based application for instagram features like posting,liking and commenting on images.
 
 
-### Cloning
-* In your terminal:
-        
-        $ git clone https://github.com/martingathu/personal-gallery
-        $ cd personal-gallery
 
-## Running the Application
-* Creating the virtual environment
+## Live link
 
-        $ python3.6 -m venv --without-pip virtual
-        $ source virtual/bin/env
-        $ curl https://bootstrap.pypa.io/get-pip.py | python 
-        
-* Installing django and other Modules
+https://myintagramclone.herokuapp.com/
 
-        $ python3.6 -m pip install django
-        $ python3.6 -m pip install Flask-Bootstrap
-       
-        
-        
-* To run the application, in your terminal:
-        $ python3.6 manage.py runserver
+### Prerequsites
+    - Python 3.6
+    - Django
 
-## Testing the Application
-* To run the tests for the class files:
+### Clone the Repo
+Run the following command on the terminal:
 
-        $ python3.6 manage.py test image
-   
-## Technologies Used
-* Python3.6
-* Django
+`git clone https://github.com/martingathu/intagram`
+
+Install  [Postgres](https://www.postgresql.org/download/)
+ 
+### Create a Virtual Environment
+Run the following commands in the same terminal:
+`pip install virtualenv`
+`python3.6 -m venv virtual`
+`source virtual/bin/activate`
+
+### Install dependencies
+Install dependencies that will create an environment for the app to run
+`pip3 install -r requirements`
+
+### Create a database
+
+```
+psql
+
+CREATE DATABASE <database_name>;
+
+```
+
+### .env file
+
+```
+SECRET_KEY = '<Secret_key>'
+DBNAME = '<database_name>'
+USER = '<Username>'
+PASSWORD = '<password>'
+DEBUG = True
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = '<your-email>'
+EMAIL_HOST_PASSWORD = '<your-password>'
+
+```
+
+## Run initial Migration
+```
+python3.6 manage.py makemigrations instagram
+python3.6 manage.py migrate
+
+```
 
 
-## License
-MIT &copy;2020 [Martin Gathu](https://github.com/martingathu/)
+### Running the app in development
+In the same terminal type:
+`python3 manage.py runserver`
+
+Open the browser on `http://localhost:8000/`
+
+## Known bugs
+
+Follow functionality issues. Fix coming soon.
+
+
+## Technologies used
+    - Python 3.6
+    - HTML
+    - Bootstrap 3
+    - Django
+    - Postgresql
+
+## Support and contact details
+Contact me on martin5gathu@gmail.com  for any comments, reviews or collaboration.
+
+### License
+MIT - Licence
