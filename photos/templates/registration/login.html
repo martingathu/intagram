@@ -27,7 +27,7 @@
         {% if form.errors %}
         <p class="text-danger"> Some Information Might be Incorrect!!</p>
         {% endif %}
-        <form class="card-body" action="/accounts/register/" method="post">
+        <form class="card-body" action="/accounts/login/" method="post">
           {% csrf_token %}
           {% for field in form %}
           <div class="fieldWrapper">
