@@ -75,17 +75,23 @@ def update_profile(request):
             profile.save()
         return redirect('home')
     else:
-        form = ProfileForm()
+        form = ProfileForm(instance=request.user.profile)
+        args = {}
+        # args.update(csrf(request))
+        args['form'] = form
     return render(request, 'profile/edit-profile.html', {'current_user':current_user, 'form':form})
   
-
-def profile(request):
+@login_required(login_url='/accounts/login/')
+def profile(request, user_id):
+    """
+    Function that enables one to see their profile
+    """
     current_user = request.user
 
     posts = Post.get_posts()
     comments = Comment.get_comments()
     
-    return render(request, 'profile.html', {'current_user':current_user, 'posts':posts, 'comments':comments})
+    return render(request, 'profile/profile.html', {'current_user':current_user, 'posts':posts, 'comments':comments})
 
 
 @login_required(login_url='/accounts/login/')
