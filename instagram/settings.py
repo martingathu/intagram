@@ -158,4 +158,4 @@ EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 
 ACCOUNT_ACTIVATION_DAYS = 1 # One-week activation window; you may, of course, use a different value.
 
-LOGIN_REDIRECT_URL = "/home"
+LOGIN_REDIRECT_URL = "home"
