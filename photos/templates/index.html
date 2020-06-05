@@ -14,14 +14,14 @@
 
 
                     {%if post.user.profile.profile_photo%}
-                    <a><img class="rounded-circle" src="{{post.user.profile.profile_photo.url}}"
+                    <a><img class="img-circle" src="{{post.user.profile.profile_photo.url}}"
                             style="height:70px;width: 70px;">
                         <strong style="font-size:19px;">{{post.user.username | title}}</strong>
                     </a>
 
                     {%else%}
 
-                    <a class="fa fa-user fa-3x" style="margin-top:1%"><span
+                    <a class="fa fa-user fa-3x" style="margin-top:1%" href="/user/{{user.id}}"><span
                             style="font-size:19px;">{{post.user.username | title}}</span></a>
                     {%endif%}
 
