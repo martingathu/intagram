@@ -15,7 +15,7 @@
 
                     {%if post.user.profile.profile_photo%}
                     <a><img class="rounded-circle" src="{{post.user.profile.profile_photo.url}}"
-                            style="height:70px;width: 70px;" alt="No profile pic">
+                            style="height:70px;width: 70px;">
                         <strong style="font-size:19px;">{{post.user.username | title}}</strong>
                     </a>
 
@@ -60,7 +60,7 @@
         <div class="col-sm-2"></div>
     </div>
 
-    <!-- {% for post in posts %}
+    {% for post in posts %}
 
     <div class="modal fade" id="extraModal{{post.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
@@ -101,6 +101,6 @@
         </div>
     </div>
     {%endfor%}
-</div> -->
+</div>
 
 {%endblock%}
