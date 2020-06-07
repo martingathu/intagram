@@ -5,12 +5,14 @@ import django.utils.timezone
 
 
 
+
 # Create your models here.
 class Post(models.Model):
     caption = models.CharField(max_length=60)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     pub_date = models.DateTimeField(auto_now_add=True)
     post_image = models.ImageField(upload_to = 'posts/')
+    like = models.IntegerField(default=0)
 
     @classmethod
     def get_posts(cls):
@@ -25,7 +27,24 @@ class Post(models.Model):
 
     class Meta:
         ordering = ['pub_date']
+    
+    @classmethod
+    def update_post(self, update):
+        self.post = update
+        self.save
 
+    @classmethod
+    def display_user_post(cls):
+        post = cls.objects.filter()
+        return post
+class Follow(models.Model):
+    following = models.ForeignKey(User, on_delete=models.CASCADE, related_name='following')
+    follower = models.ForeignKey(User, on_delete=models.CASCADE, related_name='follower')
+
+    def __str__(self):
+        return '{} follows {}'.format(self.following,self.follower)
+
+User.add_to_class('followings',models.ManyToManyField('self',through=Follow,related_name='followers',symmetrical=False))
     
 
 
@@ -51,19 +70,16 @@ class Profile(models.Model):
     def delete_profile(self):
         self.delete()
 
-    def updateProfile(sender, **kwargs):
-        if kwargs['created']:
-            profile = Profile.objects.created(user=kwargs['instance'])
-
-            post_save.connect(Profile, sender=User)
-        return profile
+    def updateProfile(self, update):
+       self.bio = update
+       self.save
 
     @classmethod
-    def search_profile(cls, name):
-        profile = cls.objects.filter(user__username__icontains=name)
-        return profile 
+    def search_profile(cls, search_term):
+        user = cls.objects.filter(user__username__icontains=search_term)
+        return user 
 
     @classmethod
     def get_by_id(cls, id):
-        profile = Profile.objects.get(id=id)
+        profile = cls.objects.get(id=id)
         return profile
