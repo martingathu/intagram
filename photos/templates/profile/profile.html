@@ -9,17 +9,34 @@
 
             <div class="col-xs-12 col-sm-6 col-md-3">
                 {%if user.profile.profile_photo%}
-                <img class="rounded-circle" src="{{user.profile.profile_photo.url}}" style="height:200px;width: 200px;"
+                <img class="img-circle" src="{{user.profile.profile_photo.url}}" style="height:200px;width: 200px;"
                     alt="No profile pic">
                 {%else%}
                 <p>No profile picture!</p>
                 {%endif%}
             </div>
 
+            {% if request.user.is_authenticated%}
+            <div class="follow-toggle__container">
+              <button class="btn btn-primary {% if not following %}follow-user{% else %}unfollow-user{% endif %}">
+                {% if not following %}
+                  Follow
+                {% else %}
+                  Following
+                {% endif %}
+              </button>
 
+            </div>
+
+          {% endif %}
             <div class="col-xs-6 col-sm-6 col-md-3">
                 <strong style="font-size:25px;">{{current_user.username | title}}</strong>
                 <a href='/updateprofile/' class="btn btn-primary text-white">Edit profile</a>
+                <div class="fas fa-cog" style="font-size:24px;" type="button" data-toggle="modal" data-target="#logoutModal">
+                    <p class="bubble"></p>
+                    <p class="bubble"></p>
+                    <p class="bubble"></p>
+                </div>
                 {%if user.profile.bio %}
                 <p style="font-size:23px;"><strong>Bio:</strong> {{user.profile.bio}}</p>
                 {%else%}
@@ -84,7 +101,18 @@
         </div>
     </div>
     {%endfor%}
+    
 
 
+</div>
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content" style="text-align: center;">        
+          <a type="button" class="btn" href="">Change Password</a><br>
+          <a type="button" class="btn" href="/logout">Logout</a><br>
+          <a type="button" class="btn" data-dismiss="modal">Cancel</a>
+      </div>
+    </div>
+  </div>
 </div>
 {%endblock%}
