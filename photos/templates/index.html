@@ -14,7 +14,7 @@
 
 
                     {%if post.user.profile.profile_photo%}
-                    <a><img class="img-circle" src="{{post.user.profile.profile_photo.url}}"
+                    <a href="{% url 'profile' post.user.id %}"><img class="img-circle" src="{{post.user.profile.profile_photo.url}}"
                             style="height:70px;width: 70px;">
                         <strong style="font-size:19px;">{{post.user.username | title}}</strong>
                     </a>
@@ -24,6 +24,7 @@
                     <a class="fa fa-user fa-3x" style="margin-top:1%" href="/user/{{user.id}}"><span
                             style="font-size:19px;">{{post.user.username | title}}</span></a>
                     {%endif%}
+                    
 
                 </div>
 
@@ -35,12 +36,16 @@
                 </div>
 
                 <div class="card-footer bg-white">
-                    <p><strong>{{post.user.username}}</strong> {{post.caption}}</p>
+                    <a href="{% url 'like' post.id %}"><i class="far fa-heart"></i>{{post.like}}</a>
+                    <a href=""><i class="far fa-comment"></i></a>
+                    
+                    <p><a href="{% url 'profile' post.user.id %}"><strong>{{post.user.username}}</strong> </a>{{post.caption}}</p>
                     <p style="font-size: 20px;color:gray;">{{post.pub_date | naturaltime}}</p>
+                   
                     <strong>Comments:</strong>
                     {% for comment in comments %}
                     {%if post.id == comment.post.id%}
-                    <p><strong>{{comment.user.username}}</strong> {{comment.comment | title}}</p>
+                    <p><a href="{% url 'profile' post.user.id %}"><strong>{{comment.user.username}}</strong></a> {{comment.comment | title}}</p>
                     {%endif%}
                     {% endfor %}
 

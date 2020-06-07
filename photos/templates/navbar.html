@@ -22,7 +22,7 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav ">
         <div class="search_bar">
-          <form class="form-inline ml-auto" action="" method="GET">
+          <form class="form-inline ml-auto" action="{% url 'search' %}" method="GET">
             <input class="form-control mr-sm-2" name="username" type="search" role="search" placeholder="Search"
               aria-label="Search">
           </form>
@@ -45,7 +45,7 @@
           {%endif%}
           
           <a class='post' href="/newpost"><span class="material-icons">add_a_photo</span></a>
-          <a class="pl-3 title" href="/signup">Log Out</a>
+          
           
          {% endif %}
         
