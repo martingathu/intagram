@@ -20,7 +20,7 @@ class SignUpForm(UserCreationForm):
 class NewPostForm(forms.ModelForm):
     class Meta:
         model = Post
-        exclude = ['user', 'pub_date']
+        exclude = ['user', 'pub_date','user', 'like']
         
 
 class CommentForm(forms.ModelForm):
