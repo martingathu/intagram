@@ -11,8 +11,10 @@ urlpatterns = [
     url(r'^logout/', LogoutView.as_view(next_page='login_url'), name='logout_url'),
     url(r'^newpost/$', views.new_post, name='new_post'),
     url(r'^user/(\d+)$', views.profile, name='profile'),
-    # url(r'^profile/edit/$', views.update_profile, name='update_profile'),
     url(r'^updateprofile/', views.update_profile, name='update_profile'),
+    url(r'^likes/(?P<id>\d+)',views.likes,name ='like'),
+    url(r'^follow/(\d+)',views.follow,name="follow"),
+    url(r'^search/', views.search_user, name='search'),
   
 ]
 
