@@ -15,7 +15,7 @@ import dj_database_url
 from decouple import config,Csv
 import django_heroku
 
-django_heroku.settings(locals())
+
 
 MODE=config("MODE", default="dev")
 SECRET_KEY = config('SECRET_KEY')
@@ -137,6 +137,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
+
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
@@ -161,4 +162,6 @@ EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 ACCOUNT_ACTIVATION_DAYS = 1 # One-week activation window; you may, of course, use a different value.
 
 LOGIN_REDIRECT_URL = "home"
+
+django_heroku.settings(locals())
 
