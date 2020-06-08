@@ -11,9 +11,11 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
-import django_heroku
 import dj_database_url
 from decouple import config,Csv
+import django_heroku
+
+django_heroku.settings(locals())
 
 MODE=config("MODE", default="dev")
 SECRET_KEY = config('SECRET_KEY')
@@ -159,3 +161,4 @@ EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 ACCOUNT_ACTIVATION_DAYS = 1 # One-week activation window; you may, of course, use a different value.
 
 LOGIN_REDIRECT_URL = "home"
+
